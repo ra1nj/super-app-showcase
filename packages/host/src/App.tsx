@@ -4,6 +4,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import MainNavigator from './navigation/MainNavigator';
 import SplashScreen from './components/SplashScreen';
 import ErrorBoundary from './components/ErrorBoundary';
+import {InAppBrowser} from 'react-native-inappbrowser-reborn';
+import {Button} from 'react-native';
 
 const AuthProvider = React.lazy(() => import('auth/AuthProvider'));
 const SignInScreen = React.lazy(() => import('auth/SignInScreen'));
@@ -30,6 +32,9 @@ const App = () => {
               <NavigationContainer
                 onReady={() => RNBootSplash.hide({fade: true, duration: 500})}>
                 <MainNavigator />
+                  <Button title={'test'} onPress={()=>{
+                      InAppBrowser.open('www.bing.com');
+                  }}/>
               </NavigationContainer>
             );
           }}
